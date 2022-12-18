@@ -1,83 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #333;
-    }
+  <head>
+    <style>
+      .character {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        width: 50px;
+        height: 50px;
+      }
+      #character-1 {
+        background-color: blue;
+      }
+      #character-2 {
+        background-color: red;
+      }
 
-    #cube {
-      width: 200px;
-      height: 200px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      perspective: 1000px;
-    }
+      #box {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        border: 1px solid black;
+        width: 300px;
+        height: 300px;
+        background-color: white;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div class="character" id="character-1"></div>
+      <div class="character" id="character-2"></div>
+      <div id="box"></div>
+    </div>
 
-    .side {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border: 1px solid #fff;
-      box-sizing: border-box;
-      font-size: 40px;
-      color: #fff;
-      text-align: center;
-      line-height: 200px;
-    }
+    <script>
+      const character1 = document.querySelector('#character-1');
+      const character2 = document.querySelector('#character-2');
 
-    .front {
-      transform: rotateY(0deg) translateZ(100px);
-      background-color: #f00;
-    }
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'w') {
+          character1.style.top = `${parseInt(character1.style.top) - 5}%`;
+        } else if (event.key === 's') {
+          character1.style.top = `${parseInt(character1.style.top) + 5}%`;
+        } else if (event.key === 'a') {
+          character1.style.left = `${parseInt(character1.style.left) - 5}%`;
+        } else if (event.key === 'd') {
+          character1.style.left = `${parseInt(character1.style.left) + 5}%`;
+        }
 
-    .back {
-      transform: rotateY(180deg) translateZ(100px);
-      background-color: #0f0;
-    }
+        console.log(event);
+        console.log(event.key);
+        console.log(character1.style.top, character1.style.left);
+      });
 
-    .left {
-      transform: rotateY(-90deg) translateZ(100px);
-      background-color: #00f;
-    }
-
-    .right {
-      transform: rotateY(90deg) translateZ(100px);
-      background-color: #ff0;
-    }
-
-    .top {
-      transform: rotateX(90deg) translateZ(100px);
-      background-color: #f0f;
-    }
-
-    .bottom {
-      transform: rotateX(-90deg) translateZ(100px);
-      background-color: #0ff;
-    }
-  </style>
-</head>
-<body>
-  <div id="cube">
-    <div class="side front">Front</div>
-    <div class="side back">Back</div>
-    <div class="side left">Left</div>
-    <div class="side right">Right</div>
-    <div class="side top">Top</div>
-    <div class="side bottom">Bottom</div>
-  </div>
-
-  <script>
-    var cube = document.getElementById('cube');
-    var angle = 0;
-    setInterval(function() {
-      angle += 0.1;
-      cube.style.transform = 'rotateY(' + angle + 'deg) rotateX(' + angle + 'deg) rotateZ(' + angle + 'deg)';
-    }, 10);
-  </script>
-</body>
+      document.addEventListener('keydown', (event) => {
+        console.log(event);
+        console.log(character2.style.top, character2.style.left);
+      });
+    </script>
+  </body>
 </html>
