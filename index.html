@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+      }
+
+      #cube {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        perspective: 1000px;
+      }
+
+      .side {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #fff;
+        box-sizing: border-box;
+        font-size: 40px;
+        color: #fff;
+        text-align: center;
+        line-height: 200px;
+      }
+
+      .front {
+        transform: rotateY(0deg) translateZ(100px);
+        background-color: #f00;
+      }
+
+      .back {
+        transform: rotateY(180deg) translateZ(100px);
+        background-color: #0f0;
+      }
+
+      .left {
+        transform: rotateY(-90deg) translateZ(100px);
+        background-color: #00f;
+      }
+
+      .right {
+        transform: rotateY(90deg) translateZ(100px);
+        background-color: #ff0;
+      }
+
+      .top {
+        transform: rotateX(90deg) translateZ(100px);
+        background-color: #f0f;
+      }
+
+      .bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+        background-color: #0ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cube">
+      <div class="side front">Front</div>
+      <div class="side back">Back</div>
+      <div class="side left">Left</div>
+      <div class="side right">Right</div>
+      <div class="side top">Top</div>
+      <div class="side bottom">Bottom</div>
+    </div>
+
+    <script>
+      var cube = document.getElementById('cube');
+      var angle = 0;
+      setInterval(function () {
+        angle += 0.1;
+        cube.style.transform = 'rotateY(' + angle + 'deg)';
+      }, 10);
+    </script>
+  </body>
+</html>
