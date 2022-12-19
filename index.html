@@ -28,23 +28,6 @@
         left: 300px; */
         background-color: blue;
       }
-      .c2 {
-        position: absolute;
-        top: 100px;
-        left: 100px;
-        background-color: red;
-      }
-
-      #box {
-        position: absolute;
-        top: 100px;
-        left: 100px;
-        border: 1px solid black;
-        width: 300px;
-        height: 300px;
-        background-color: white;
-        z-index: -3;
-      }
     </style>
   </head>
   <body>
@@ -52,43 +35,23 @@
     <div class="character c2"></div>
     <script>
       const c1 = document.querySelector('.c1');
-      const c2 = document.querySelector('.c2');
+
+      let s1 = c1.style;
+      s1.top = '300px';
+      s1.left = '300px';
 
       document.addEventListener('keydown', (event) => {
         if (event.key === 'w') {
-          c1.style.top = c1.style.top
-            ? `${parseInt(c1.style.top) - 5}px`
-            : '0px';
-        } else if (event.key === 's') {
-          c1.style.top = c1.style.top
-            ? `${parseInt(c1.style.top) + 5}px`
-            : '0px';
-        } else if (event.key === 'a') {
-          c1.style.left = c1.style.left
-            ? `${parseInt(c1.style.left) - 5}px`
-            : '0px';
-        } else if (event.key === 'd') {
-          c1.style.left = c1.style.left
-            ? `${parseInt(c1.style.left) + 5}px`
-            : '0px';
+          s1.top = s1.top ? `${parseInt(s1.top) - 5}px` : '0px';
         }
-
-        if (event.key === 'ArrowUp') {
-          c2.style.top = c2.style.top
-            ? `${parseInt(c2.style.top) - 5}px`
-            : '0px';
-        } else if (event.key === 'ArrowDown') {
-          c2.style.top = c2.style.top
-            ? `${parseInt(c2.style.top) + 5}px`
-            : '0px';
-        } else if (event.key === 'ArrowLeft') {
-          c2.style.left = c2.style.left
-            ? `${parseInt(c2.style.left) - 5}px`
-            : '0px';
-        } else if (event.key === 'ArrowRight') {
-          c2.style.left = c2.style.left
-            ? `${parseInt(c2.style.left) + 5}px`
-            : '0px';
+        if (event.key === 's') {
+          s1.top = s1.top ? `${parseInt(s1.top) + 5}px` : '0px';
+        }
+        if (event.key === 'a') {
+          s1.left = s1.left ? `${parseInt(s1.left) - 5}px` : '0px';
+        }
+        if (event.key === 'd') {
+          s1.left = s1.left ? `${parseInt(c1.style.left) + 5}px` : '0px';
         }
       });
     </script>
