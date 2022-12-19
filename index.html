@@ -5,53 +5,38 @@
       body {
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
       }
 
-      #game-container {
-        position: relative;
-        width: 500px;
-        height: 500px;
-        border: 1px solid black;
-        z-index: -1;
-      }
-      .character {
+      .c1 {
         width: 100px;
         height: 100px;
-      }
-      .c1 {
+        border-radius: 50%;
         position: absolute;
-        /* top: 300px;
-        left: 300px; */
         background-color: blue;
       }
     </style>
   </head>
   <body>
-    <div class="character c1"></div>
-    <div class="character c2"></div>
+    <div class="c1"></div>
     <script>
       const c1 = document.querySelector('.c1');
 
       let s1 = c1.style;
-      s1.top = '300px';
-      s1.left = '300px';
+      s1.top = '100px';
+      s1.left = '100px';
 
       document.addEventListener('keydown', (event) => {
         if (event.key === 'w') {
-          s1.top = s1.top ? `${parseInt(s1.top) - 5}px` : '0px';
+          s1.top = s1.top ? `${parseInt(s1.top) - 1}px` : '0px';
         }
         if (event.key === 's') {
-          s1.top = s1.top ? `${parseInt(s1.top) + 5}px` : '0px';
+          s1.top = s1.top ? `${parseInt(s1.top) + 1}px` : '0px';
         }
         if (event.key === 'a') {
-          s1.left = s1.left ? `${parseInt(s1.left) - 5}px` : '0px';
+          s1.left = s1.left ? `${parseInt(s1.left) - 1}px` : '0px';
         }
         if (event.key === 'd') {
-          s1.left = s1.left ? `${parseInt(c1.style.left) + 5}px` : '0px';
+          s1.left = s1.left ? `${parseInt(c1.style.left) + 1}px` : '0px';
         }
       });
     </script>
